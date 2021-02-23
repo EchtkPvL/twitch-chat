@@ -228,7 +228,7 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
                 if (user["message-type"] == "whisper") return;
 
                 while($('#main li').length >= 800) $('#main li').last().remove();
-                while($('#primar li').length >= 800) $('#main li').last().remove();
+                while($('#primar li').length >= 800) $('#primar li').last().remove();
 
                 highlight = '';
                 if(user["mod"]) highlight = "text-success";
@@ -312,6 +312,25 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
 
             $("#raubzug").on("click", function(){ client.say("JosyMovieS", "!raubzug 248"); });
             $("#gaehn").on("click", function(){ client.say("einfacheva", "!gähn"); });
+        </script>
+        <script>
+            $('document').ready(function(){
+                setDivHeight();
+            });
+
+            $(window).on('resize', function(){
+                setDivHeight();
+            });
+
+            function setDivHeight(){
+                var wHeight = $(window).height();
+                wHeight = wHeight - $('#head').height();
+                wHeight = wHeight - $('.container > div > div > .btn').height();
+                wHeight = wHeight - $('.container > .row').height() * 2;
+                wHeight = wHeight - 60;
+
+                $('.hoch').css({'height' : wHeight + 'px'}).css({'max-height' : wHeight + 'px'});
+            }
         </script>
     </body>
 </html>

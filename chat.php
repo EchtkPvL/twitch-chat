@@ -14,7 +14,7 @@ $twitchApi = new \TwitchApi\TwitchApi($options);
 checkLogin($twitchApi);
 $user = $twitchApi->getAuthenticatedUser($_SESSION['access_token']);
 $token = "oauth:" . $_SESSION['access_token'];
-$channels = empty($_GET['channels']) ? ['echtkpvl', 'joeel561'] : explode(',', $_GET['channels']);
+$channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GET['channels']);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'joeel561'] : explode(',', $
                 background: rgb(55 55 65);
                 color: rgb(255 255 240);
             }
-            
+
             input[type=text] {
                 background-color: rgb(65 70 75);
                 color: rgb(255 255 240);
@@ -192,7 +192,8 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'joeel561'] : explode(',', $
 
                 return "<li" + highlight + "><i>"
                     + (new Date()).toLocaleString().slice(10)
-                    + "</i> " + channel
+                    + "</i> "
+                    + channel
                     + user
                     + text
                     + "</li>\n"

@@ -1,10 +1,11 @@
 <?php
 require_once "vendor/autoload.php";
+require_once "functions.php";
 session_start();
 
 $options = [
-    'client_id' => '1234abcd',
-    'client_secret' => '1234abcd',
+    'client_id' => 'a1b2c3d4efghijklmnopqrstuvwxyz',
+    'client_secret' => '0n1o2p3qrstuvwxyzabcdefghijklm',
     'redirect_uri' => 'https://twitch.echtkpvl.de/login.php',
     'scope' => [
         'user_read',
@@ -13,18 +14,3 @@ $options = [
         'chat:read',
     ],
 ];
-
-function checkLogin($twitchApi){
-    if(empty($_SESSION['access_token'])){
-        header("Location: /login.php");
-        die;
-    } else {
-        $user = $twitchApi->getAuthenticatedUser($_SESSION['access_token']);
-        if(empty($user['_id'])){
-            header("Location: /logout.php");
-            die;
-        }
-    }
-
-    return true;
-}

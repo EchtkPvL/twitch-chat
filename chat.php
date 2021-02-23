@@ -231,13 +231,17 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
                 while($('#primar li').length >= 800) $('#primar li').last().remove();
 
                 highlight = '';
+                name = botname.toLowerCase();
+                var regex_channel = new RegExp("(^|\\s)(@" + channel.slice(1) + "|" + channel.slice(1) + ")(\\s+|[\.,!?]|$)");
+                var regex_bot = new RegExp("(^|\\s)(@" + name + "|" + name + ")(\\s+|[\.,!?]|$)");
+
                 if(user["mod"]) highlight = "text-success";
-                if(message.toLowerCase().includes(botname)) highlight = "bg-success text-white";
                 if(user["badges-raw"] !== null && user["badges-raw"].includes("broadcaster")) highlight = "text-danger";
+                if(regex_bot.test(message.toLowerCase())) highlight = "bg-success text-white";
 
                 if(
-                    message.toLowerCase().includes(botname)
-                    || message.toLowerCase().includes(channel.slice(1))
+                    regex_bot.test(message.toLowerCase())
+                    || regex_channel.test(message.toLowerCase())
                     || user["mod"]
                     || (user["badges-raw"] !== null && user["badges-raw"].includes("broadcaster"))
                 ) {
@@ -294,7 +298,7 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
             // Message deleted
             // ---------------------------
             client.on('messagedeleted', (channel, username, deletedMessage) => {
-                $("#main").prepend(genLi(deletedMessage, channel, username, "bg-warning text-dark"));
+                $("#main").prepend(genLi("<s>" + deletedMessage + "</s>", channel, username, "bg-warning text-dark"));
             });
 
             $("#msg").on("keypress", function(event) {

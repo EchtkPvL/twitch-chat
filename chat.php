@@ -2,6 +2,7 @@
 /**
  *
  * ToDo: Fade-Out von Nachrichten nach x Sekunden -> Besserer Überblick bei wenig Nachrichten
+ * ToDo: Nur emotes Nachricht nicht rechts anzeigen
  *
  * @author    Jonas Berner <admin@jonas-berner.de>
  * @copyright 23.02.2021 Jonas Berner
@@ -101,6 +102,18 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
             ::-webkit-scrollbar-thumb {
                 background: #a5abb1;
             }
+        </style>
+        <style>
+            .chat > ul > li {
+                animation: fadeOut 30s 10s forwards;
+            }
+
+            @keyframes fadeOut {
+                0% { opacity: 1.0; }
+                50% { opacity: 0.75; }
+                100% { opacity: 0.5; }
+            }
+
         </style>
 
         <script src="//code.jquery.com/jquery-3.5.0.min.js"></script>

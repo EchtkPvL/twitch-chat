@@ -31,25 +31,24 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
                 color: rgb(255 255 240);
             }
 
-            input[type=text] {
-                background-color: rgb(65 70 75);
-                color: rgb(255 255 240);
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 4px;
+                transition: all .1s linear;
+                border-radius: 50%;
             }
 
-            .emoticon {
-                height: 20px;
-                width: 20px;
+            ::-webkit-scrollbar-track {
+              background: transparent;
             }
 
-            li {
-                list-style-type: none; /* decimal-leading-zero; */
-                border-bottom: 1px solid rgb(45 45 55);
-                padding: 2px 0 2px 0;
-                font-size: small;
+            ::-webkit-scrollbar-track:hover {
+                background: rgba(0,0,0,.2)
             }
 
-            li > a { display: none; }
-            li.text-muted > a, li.text-white > a { display: unset; }
+            ::-webkit-scrollbar-thumb {
+                background: #a5abb1;
+            }
 
             #left:after {
                 content: "";
@@ -79,31 +78,33 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
                 overflow-x: hidden;
                 overflow-y: scroll;
             }
+        </style>
+        <style>
+            input[type=text] {
+                background-color: rgb(65 70 75);
+                color: rgb(255 255 240);
+            }
+
+            .emoticon {
+                height: 20px;
+                width: 20px;
+            }
+
+            li {
+                list-style-type: none; /* decimal-leading-zero; */
+                border-bottom: 1px solid rgb(45 45 55);
+                padding: 2px 0 2px 0;
+                font-size: small;
+            }
+
+            li > a { display: none; }
+
+            li.text-muted > a, li.text-white > a { display: unset; }
 
             ul { padding-inline-start: 0px; }
 
             i { font-size: 75%; }
 
-            ::-webkit-scrollbar {
-                width: 8px;
-                height: 4px;
-                transition: all .1s linear;
-                border-radius: 50%;
-            }
-
-            ::-webkit-scrollbar-track {
-              background: transparent;
-            }
-
-            ::-webkit-scrollbar-track:hover {
-                background: rgba(0,0,0,.2)
-            }
-
-            ::-webkit-scrollbar-thumb {
-                background: #a5abb1;
-            }
-        </style>
-        <style>
             .chat > ul > li {
                 animation: fadeOut 30s 10s forwards;
             }
@@ -113,7 +114,6 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
                 50% { opacity: 0.75; }
                 100% { opacity: 0.5; }
             }
-
         </style>
 
         <script src="//code.jquery.com/jquery-3.5.0.min.js"></script>

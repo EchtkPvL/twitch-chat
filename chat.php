@@ -110,13 +110,13 @@ $channels = explode(',', $_GET['channels']);
             i { font-size: 75%; }
 
             .chat > ul > li {
-                animation: fadeOut 30s 10s forwards;
+                animation: fadeOut 30s 5s forwards;
             }
 
             @keyframes fadeOut {
                 0% { opacity: 1.0; }
-                50% { opacity: 0.75; }
-                100% { opacity: 0.5; }
+                50% { opacity: 0.65; }
+                100% { opacity: 0.3; }
             }
         </style>
 

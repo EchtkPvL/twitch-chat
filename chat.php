@@ -15,7 +15,11 @@ $twitchApi = new \TwitchApi\TwitchApi($options);
 checkLogin($twitchApi);
 $user = $twitchApi->getAuthenticatedUser($_SESSION['access_token']);
 $token = "oauth:" . $_SESSION['access_token'];
-$channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GET['channels']);
+if(empty($_GET['channels'])){
+    header("Location: ?channels=echtkpvl,vojay");
+    die;
+}
+$channels = explode(',', $_GET['channels']);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -139,7 +143,7 @@ $channels = empty($_GET['channels']) ? ['echtkpvl', 'vojay'] : explode(',', $_GE
 
             <div class="row" id="head">
                 <div class="col-3">
-                    <input class="form-control" type="text" id="channel" name="channel" value="EchtkPvL"></input>
+                    <input class="form-control" type="text" id="channel" name="channel" value="<?php echo $channels[0]; ?>"></input>
                 </div>
                 <div class="col-6">
                     <input class="form-control" type="text" id="msg" name="msg" value="Hi Chat HeyGuys bleedPurple"></input>

@@ -7,10 +7,14 @@ $options = [
     'client_id' => 'a1b2c3d4efghijklmnopqrstuvwxyz',
     'client_secret' => '0n1o2p3qrstuvwxyzabcdefghijklm',
     'redirect_uri' => 'https://twitch.echtkpvl.de/login.php',
+    'oauth_uri' => 'https://twitch.echtkpvl.de/oauth',
     'scope' => [
         'user_read',
         'channel:moderate',
         'chat:edit',
         'chat:read',
+        'whispers:read',
+        'whispers:edit',
+        'channel_editor',
     ],
 ];

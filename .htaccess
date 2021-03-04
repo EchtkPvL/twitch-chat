@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteCond  %{HTTP_USER_AGENT}  MSIE.[1-6]\.
+RewriteRule  ^/  https://browsehappy.com/ [R]
+
+RewriteRule ^oauth$ /oauth.php [L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule .* /index.php

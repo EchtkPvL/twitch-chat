@@ -121,7 +121,7 @@ $channels = explode(',', $_GET['channels']);
         </style>
 
         <script src="//code.jquery.com/jquery-3.5.0.min.js"></script>
-        <script src="//gitcdn.xyz/repo/tmijs/cdn/master/latest/tmi.min.js"></script>
+        <script src="tmi.min.js"></script>
         <script>
         $( document ).ready(function() {
             console.log( "document loaded" );
